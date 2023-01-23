@@ -1,9 +1,0 @@
-.pageRoot{
-  display: flex;
-  height: 100vh;
-  background-color: #E0E0E0;
-}
-
-.pageView{
-  flex: 1;
-}

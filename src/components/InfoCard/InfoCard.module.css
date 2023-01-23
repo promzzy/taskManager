@@ -1,0 +1,40 @@
+.cardRoot{
+  padding: 15px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.7em;
+}
+.button{
+  background-color: #ffffff;
+  color: #000;
+  padding: 7px 20px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  width: 90%;
+}
+.button:hover{
+  transform: scale(1.08);
+  background-color: #F4F5F9;
+}
+.cardIcon{
+/* width: 50px; */
+height: 35px;
+margin-bottom: 4px;
+}
+.cardIcon img{
+  object-fit: contain;
+  height: 100%;
+}
+.cardTitle{
+  font-size: 1.1em;
+  font-weight: 500;
+}
+.cardDesc{
+  font-size: .8em;
+  font-weight: 300;
+}

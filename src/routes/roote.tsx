@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../pagges/Dashboard";
-import DashboardLayout from "../pagges/DashboardLayout";
-import HomePage from "../pagges/HomePage";
+import Dashboard from "../pages/Dashboard";
+import DashboardLayout from "../pages/DashboardLayout";
+import HomePage from "../pages/HomePage";
+import Taskboard from "../pages/Taskboard";
 import PrivateRoute from "./PrivateRoute";
 
   export const router = createBrowserRouter([
@@ -16,7 +17,11 @@ import PrivateRoute from "./PrivateRoute";
       {
         path: "dashboard",
         element: <Dashboard />
-      }
+      },
+      {
+        path: "/task-board",
+        element: <Taskboard />
+      },
     ],
   },
 ])

@@ -1,0 +1,17 @@
+.assingneeIcon{
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 1px;
+  background-color: orange;
+  text-transform: uppercase;
+  font-size: .85em;
+  font-weight: 600;
+  overflow: hidden;
+}
+.assingneeIcon img {
+  width: 100%;
+}

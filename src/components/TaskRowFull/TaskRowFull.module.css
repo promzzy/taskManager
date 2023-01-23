@@ -1,0 +1,35 @@
+.rowRoot{
+  padding: 15px;
+  border-radius: 3px;
+}
+table{
+  border-collapse: separate;
+ border-spacing: 0 8px;
+}
+thead{
+  font-size: .8em;
+  font-weight: 800;
+}
+td{
+  padding: 15px;
+}
+.tableBody{
+  background-color: #fff;
+}
+.tableRow{
+   font-size: 1em;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.tableRow:hover{
+  background-color: #00000029;
+  transform: scale(1.01);
+}
+.taskColumn{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+input{
+  margin-bottom: -1px;
+}

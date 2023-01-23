@@ -1,0 +1,15 @@
+.pageRoot{
+  display: flex;
+  height: 100vh;
+  background-color: #F4F5F9;
+  overflow: hidden;
+  position: relative;
+}
+
+.pageView{
+  flex: 1;
+  height: 100%;
+}
+.pageContent{
+  height: calc(100% - 50px);
+}

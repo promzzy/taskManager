@@ -14,3 +14,23 @@
   justify-content: center;
   color: #FFFFFF;
 }
+.routeBtn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  cursor: pointer;
+  margin: 7px 0px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+  font-weight: 500;
+}
+.routeBtn:hover{
+  background-color: #FD6820;
+  color: #FFFFFF;
+}
+.isActive{
+  border-right: 3px solid #0850D4;
+}

@@ -1,0 +1,10 @@
+.sliderRoot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.teamTitle{
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: 500;
+}

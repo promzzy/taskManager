@@ -1,0 +1,51 @@
+.dashboardRoot{
+  padding: 2.5em;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+}
+.userName{
+  font-size: 1.4em;
+  font-weight: 300;
+}
+.wlcBack{
+  font-size: 1.7em;
+  font-weight: 600;
+}
+.dashboardBody{
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+.leftBodySection{
+  flex: 2;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  overflow: scroll;
+  height: 86%;
+}
+.rightBodySection{
+  flex: 1;
+  background-color: #ffffff;
+  padding: 15px;
+  overflow: scroll;
+  height: 86%;
+}
+.taskGroupings{
+  display: flex;
+  gap: 15px;
+}
+.todoTasks{
+  background-color: #FFD8D8;
+}
+.inProgress{
+  background-color: #fdf5e0;
+}
+.completed{
+  background-color: #e7f8f6;
+}
+.sectionTitle{
+  margin-top: 2.5em;
+  font-weight: 500;
+}
