@@ -2,9 +2,9 @@ import { FC } from "react";
 import classes from "./ProfileIcon.module.css";
 import { profileIconProps } from "./types";
 
-const ProfileIcon: FC<profileIconProps> = ({ firstName, lastName, image }) => {
+const ProfileIcon: FC<profileIconProps> = ({ firstName, lastName, className, image, onClick }) => {
   return (
-    <span className={classes.assingneeIcon}>
+    <span onClick={onClick} className={`${classes.assingneeIcon} ${className}`}>
       {image ? (
         <img src={image} alt="" />
       ) : (

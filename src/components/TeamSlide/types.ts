@@ -1,3 +1,6 @@
 export type TeamSlideProps = {
-  teamName: string;
+  teamName?: string,
+  teamMembers?: (number | undefined)[],
+  onAddMember?: () => void,
+  onViewMember?: () => void,
 }

@@ -1,0 +1,12 @@
+.pageRoot{
+  padding: 2em 3em;
+  height: 90Vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.mainBody{
+  flex: 1;
+  overflow: scroll;
+  padding: 20px 0;
+}

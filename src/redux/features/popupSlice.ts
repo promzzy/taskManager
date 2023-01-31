@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   popupComponent: null,
   ispopupOpen: false,
+  onClose: () => {}
 }
 
 
@@ -13,10 +14,12 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     setPopupComponent: (state, action) => {
+      console.log(action, )
       state.popupComponent = action.payload
      },
     showPopup: (state, action) => {
-      state.ispopupOpen = action.payload
+      state.ispopupOpen = action.payload.ispopupOpen;
+      state.onClose = action.payload.onClose;
     },
   },
 })

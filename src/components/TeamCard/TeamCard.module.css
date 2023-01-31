@@ -1,0 +1,32 @@
+.pageRoot{
+  padding: 15px;
+  margin-top: 15px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.pageRoot:hover{
+/* transform: scale(1.01); */
+}
+.imageWrapper{
+  height: 70px;
+  width: 70px;
+}
+.memberName{
+  font-size: 1em;
+  font-weight: 700;
+}
+.memberEmail{
+  font-size: .9em;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.503);
+}
+.memberNumber{
+  margin-top: 5px;
+    font-size: 1em;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.503);
+}

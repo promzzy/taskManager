@@ -1,0 +1,10 @@
+.inputField{
+  width: 100%;
+  min-height: 40px;
+  font-size: 1.3em;
+  padding: 2px 10px;
+}
+.inputField::placeholder{
+  font-size: .8em !important;
+  font-weight: 100;
+}

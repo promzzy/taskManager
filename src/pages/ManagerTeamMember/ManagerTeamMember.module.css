@@ -1,0 +1,46 @@
+.ManageTeamRoot{
+  width: 50vw;
+}
+.taskTitleInput{
+  border: none;
+  width: 95%;
+  background-color: #F4F5F9;
+}
+.form{
+height: 100%;
+display: flex;
+flex-direction: column;
+}
+.inputWrap{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  flex: 1;
+}
+.taskTitleInput::placeholder{
+  font-weight: 100;
+}
+.textarea{
+  border: none;
+  width: 95% !important;
+  background-color: #F4F5F9;
+}
+.actionBox{
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+}
+.cancelBtn{
+  background-color: #C1C0C0 !important;
+  color: #000 !important;
+}
+.inputRow{
+  display: flex;
+  gap: 20px;
+}
+.dropdown{
+  width: 40%;
+  background-color: #F4F5F9;
+  border: none;
+}

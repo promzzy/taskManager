@@ -2,9 +2,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 30px;
 }
 .teamTitle{
   margin: 0;
   font-size: 1.3em;
   font-weight: 500;
+}
+.membersContainer{
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.teamMember{
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  cursor: pointer;
+}
+.teamMember:hover{
+  transform: scale(1.05);
+}
+.addMemberBtn{
+  border: 1px dashed #707070;
+  border-radius: 50%;
+  height: 37px;
+  width: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: 100;
+  color: #707070;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.addMemberBtn:hover{
+  transform: scale(1.07);
 }

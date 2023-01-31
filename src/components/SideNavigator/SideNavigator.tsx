@@ -25,7 +25,7 @@ const SideNavigator: FC = () => {
          <button
          onClick={() => history(path.path)}
           className={`${classes.routeBtn} ${ isPathVisited(path) ? classes.isActive : undefined}`}>
-          <span>{path.icon}</span>
+          <span>{path?.icon}</span>
           <span>{path.name}</span>
          </button>
          ))

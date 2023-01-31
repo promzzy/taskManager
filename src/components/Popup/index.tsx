@@ -6,7 +6,7 @@ import Popup from './Popup';
 const mapState = ({popup}: RootState) => ({
   ispopupOpen: popup.ispopupOpen,
   popupComponent: popup.popupComponent,
-
+  onClose: popup.onClose,
 })
 
 const mapDispatch = (dispatch: DispatchType) => ({

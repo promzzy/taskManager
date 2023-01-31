@@ -4,6 +4,8 @@ export type TaskTableProps = {
   dueDate?: string,
     assigneeFirstName: string,
   assigneeLastName: string,
-  taskOptions: number[]
+  taskOptions: number[],
+  tableTitl: string,
   onClick?: () => void
+  createTaskClick?: () => void
 }

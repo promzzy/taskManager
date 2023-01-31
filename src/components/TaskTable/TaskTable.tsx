@@ -1,27 +1,32 @@
 import { FC } from "react";
 import ProfileIcon from "../ProfileIcon";
-import classes from './TaskRowFull.module.css';
+import classes from './TaskTable.module.css';
 import { TaskTableProps } from "./types";
 
-const TaskRowFull: FC<TaskTableProps> = ({
+const TaskTable: FC<TaskTableProps> = ({
   title,
   assigneeIcon,
   dueDate,
   assigneeFirstName = "",
   assigneeLastName = "",
   taskOptions = [],
+  tableTitl,
   onClick,
+  createTaskClick,
 }) => {
   return(
   <div className={classes.rowRoot}>
     <table width="100%">
       <thead>
-          <td>TASKS</td>
-          <td>ASSIGNEE</td>
-          <td>DUE DATE</td>
-          <td>PRIORITY</td>
-          <td>STATUS</td>
-          <td></td>
+          <th className={classes.theadTitle}>
+            <span className={`${classes.taskLabel} ${classes[tableTitl]}`}>{tableTitl}</span>
+            <span>{`${taskOptions?.length} TASKS`}</span>
+            </th>
+          <th>ASSIGNEE</th>
+          <th>DUE DATE</th>
+          <th>PRIORITY</th>
+          <th>STATUS</th>
+          <th></th>
       </thead>
       <tbody className={classes.tableBody}>
         {taskOptions.map(_ =>(
@@ -47,8 +52,9 @@ const TaskRowFull: FC<TaskTableProps> = ({
         ))}
         </tbody>
     </table>
+      <button onClick={createTaskClick} className={classes.newTaskBtn}>+ New task</button>
   </div>
   )
 }
 
-export default TaskRowFull;
+export default TaskTable;

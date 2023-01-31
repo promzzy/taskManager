@@ -1,3 +1,6 @@
+import { ReactElement } from "react"
+
 export type TaskBoardProps = {
-  showPopup: (show: boolean) => void
+  showPopup: (show: boolean) => void,
+  setPopupComponent: (compounent: ReactElement) => void,
 }

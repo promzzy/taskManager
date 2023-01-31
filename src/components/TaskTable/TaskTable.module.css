@@ -1,0 +1,80 @@
+.rowRoot{
+  padding: 15px;
+  border-radius: 3px;
+}
+table{
+  border-collapse: separate;
+  border-spacing: 0 1px;
+}
+thead{
+  font-size: .8em;
+  font-weight: 800;
+}
+td{
+  padding: 13px;
+  cursor: pointer;
+}
+th{
+  text-transform: uppercase;
+  text-align: start;
+  padding: 0px 10px;
+}
+.tableBody{
+  background-color: #fff;
+}
+.tableRow{
+   font-size: 1em;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.tableRow:hover{
+  background-color: #00000029;
+  transform: scale(1.01);
+}
+.taskColumn{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+input{
+  margin-bottom: -1px;
+}
+.theadTitle{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: -10px;
+}
+.newTaskBtn{
+  border: none;
+  padding: 2px 20px;
+  font-size: .85em;
+  font-weight: 300;
+  margin-top: 2px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.newTaskBtn:hover{
+  background-color: #C1C0C0;
+}
+.taskLabel{
+  padding: 8px 15px;
+  margin-bottom: -3px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #d3d3d3;
+  color: #000;
+  font-size: .8em;
+}
+.progress{
+  background-color: #FF6900;
+  color: #fff;
+}
+.upcoming{
+  background-color: #a875ff;
+  color: #fff;
+}
+.completed{
+  background-color: #BEEAC9;
+  color: #fff;
+}
