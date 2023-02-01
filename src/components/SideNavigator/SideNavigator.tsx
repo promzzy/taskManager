@@ -1,13 +1,16 @@
-import { FC, useCallback } from "react"
+import { FC, useCallback, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 import { navPaths } from "./constants";
 import classes from './SideNavigator.module.css';
 import { RouteType } from "./types";
+import { RxEnter, RxCross2 } from "react-icons/rx";
+
 
 const SideNavigator: FC = () => {
 
   const location = useLocation()
   const history = useNavigate()
+  const [tuggleSideNav, setTuggleSideNav] = useState(true)
 
     const isPathVisited = useCallback(
     (navItem: RouteType) =>
@@ -17,8 +20,17 @@ const SideNavigator: FC = () => {
     [location.pathname],
   );
 
-  return ( <div className={classes.sideNavBar}>
-      <div className={classes.sideNavTop}>husul</div>
+  return ( <div className={`${classes.sideNavBar} ${!tuggleSideNav ? classes.isCollaps : undefined}`}>
+      <div className={classes.sideNavTop}>
+
+        <button onClick={() => setTuggleSideNav(!tuggleSideNav)} className={classes.tuggleContainer}>{
+          tuggleSideNav
+          ?
+          <RxCross2 className={classes.tuggleIcon} />
+          :
+          <RxEnter className={classes.tuggleIcon} />
+        }</button>
+      </div>
       <div>
         {
          navPaths.map((path: RouteType) => (

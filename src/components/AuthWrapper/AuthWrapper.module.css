@@ -1,0 +1,45 @@
+.pageRoot{
+  position: relative;
+  height: 100vh;
+}
+.buttonTypeText{
+  font-size: 1em;
+  font-weight: 500;
+}
+.pageTop{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5em 3em;
+}
+.signUpbtnWrapper{
+  display: flex;
+  gap: 20px;
+  white-space: nowrap;
+  align-items: center;
+}
+.signUpBtn{
+  width: 100px;
+}
+.loginBody{
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+z-index: 1;
+}
+.imageBg{
+  position: absolute;
+  bottom: 0;
+}
+
+
+/* ----------------------------------------------------------------------------------------------
+                            Media Query
+---------------------------------------------------------------------------------------------- */
+
+@media  (max-width: 970px) {
+  .buttonTypeText{
+    display: none;
+  }
+}

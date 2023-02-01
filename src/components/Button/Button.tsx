@@ -6,9 +6,10 @@ const Button: FC<ButtonProps> = ({
   children,
   className,
   type = 'button',
+  onClick,
 }) => {
   return(
-    <button type={type} className={`${classes.button} ${className}`}>
+    <button onClick={onClick} type={type} className={`${classes.button} ${className}`}>
       {children}
     </button>
   )

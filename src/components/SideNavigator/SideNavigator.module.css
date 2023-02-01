@@ -3,16 +3,31 @@
   height: 100%;
   background-color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
-
+  transition: 1s ease;
 }
 .sideNavTop{
   background-color: #011B60;
   width: 100%;
   height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #FFFFFF;
+  position: relative;
+}
+.isCollaps{
+  margin-left: -120px;
+  transition: 1s ease;
+}
+.tuggleContainer{
+  position: absolute;
+  right: 0;
+  top: 5%;
+  margin-right: -35px;
+  transition: 1s ease;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: none;
+}
+.tuggleIcon{
+  font-size: 2.5em;
 }
 .routeBtn{
   display: flex;
@@ -33,4 +48,14 @@
 }
 .isActive{
   border-right: 3px solid #0850D4;
+}
+
+/* ------------------------------------------------------------------------------------------------
+                              MEDIA QUERY
+------------------------------------------------------------------------------------------------ */
+
+@media (max-width: 970px) {
+  .sideNavBar{
+    position: absolute;
+  }
 }
