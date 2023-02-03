@@ -5,4 +5,8 @@ export type InputFieldProps = {
   value?: string,
   onChange?: ChangeEventHandler<HTMLInputElement>,
   placeholder: string,
+  endIcon?: string,
+  type?: string,
+  password?: boolean,
+  name?: string,
 }
