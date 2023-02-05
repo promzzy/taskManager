@@ -5,13 +5,15 @@ import todoIcon from '../../assets/png/todo icon.png'
 import inProgress from '../../assets/png/inProgress.png'
 import completedIcon from '../../assets/png/completed icon.png'
 import TaskRow from "../../components/TaskRow";
+import { DashboardProps } from "./types";
 
-const Dashboard: FC = () => {
-  const name: string = 'Promise'
+const Dashboard: FC<DashboardProps> = ({
+  currentUser,
+}) => {
   return (
     <div className={classes.dashboardRoot}>
       <div>
-        <div className={classes.userName}>{`Hi ${name}`}</div>
+        <div className={classes.userName}>{`Hi ${currentUser?.firstName}`}</div>
         <div className={classes.wlcBack}>Welcome Back 👋🏽</div>
       </div>
       <p className={classes.dashboardBody}>
@@ -49,6 +51,8 @@ const Dashboard: FC = () => {
                   status="upcoming"
                   category=""
                   date='7/23/2022'
+                  firstName="promise"
+                  lastName="stephen"
                 />
               ))
            } </div>

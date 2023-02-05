@@ -2,12 +2,14 @@ import { FC } from "react";
 import AuthWrapper from "../../components/AuthWrapper";
 import Button from "../../components/Button";
 import InputField from "../../components/InputField";
+import useAuth from "../../utils/hooks/useAuth";
 import useLogin from "./hooks/useLogin";
 import classes from "./Login.module.css";
 
 const Login: FC = () => {
   const { state, history, dispatch } = useLogin();
   const { email, password } = state;
+  const {login } = useAuth();
   return (
     <AuthWrapper onClick={() => history("/register")}>
       <div className={classes.cardWrapper}>
@@ -36,7 +38,7 @@ const Login: FC = () => {
             />
           </div>
           <div className={classes.buttonBox}>
-            <Button>Log In</Button>
+            <Button onClick={() => login({email, password})}>Log In</Button>
             <button
               onClick={() => history("/forgot-password")}
               className={classes.forgotBtn}

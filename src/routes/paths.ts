@@ -8,4 +8,5 @@ export const paths = {
   memberboard: '/members',
   addMember: '/members/add-member',
   editMember: 'members/edit-member/:memberId',
+  profile: '/profile',
 }

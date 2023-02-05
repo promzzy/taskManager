@@ -1,3 +1,25 @@
 .boardRoot{
   padding: 2em 3em;
 }
+.taskRowCard{
+  background-color: #ffffff;
+}
+.taskMobileScrren{
+  display: none;
+}
+
+/* ------------------------------------------------------------------------------------------------
+                              MEDIA QUERY
+------------------------------------------------------------------------------------------------ */
+
+@media (max-width: 970px) {
+ .boardRoot{
+  padding: 1.5em 1em;
+}
+.taskTable{
+  display: none;
+}
+.taskMobileScrren{
+  display: block;
+}
+}

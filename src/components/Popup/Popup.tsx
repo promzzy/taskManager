@@ -6,9 +6,11 @@ const Popup: FC<PopupProps> = ({
   ispopupOpen,
   popupComponent,
   showPopup,
+  onClose,
 }) => {
   function closePopup(){
     showPopup(false)
+    onClose?.();
   }
   return (
     <div onClick={closePopup} className={`${classes.popupRoot} ${!ispopupOpen ? classes.popupOpen : undefined}`}>

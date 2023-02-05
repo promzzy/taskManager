@@ -5,16 +5,19 @@ import { TeamCardProps } from "./types";
 
 const TeamCard: FC<TeamCardProps> = ({
   onClick,
+  name,
+  phoneNumber,
+  email,
 }) => {
 
   return(
     <div onClick={onClick} className={classes.pageRoot}>
         <img className={classes.imageWrapper} src={defaultImg} alt="" />
       <div>
-        <div className={classes.memberName}>Promise Stephen</div>
+        <div className={classes.memberName}>{name}</div>
         <p>
-          <div className={classes.memberEmail}>promisestephen29@gmail.com</div>
-          <div className={classes.memberNumber}>08064453389</div>
+          <div className={classes.memberEmail}>{email}</div>
+          <div className={classes.memberNumber}>{phoneNumber}</div>
         </p>
       </div>
     </div>

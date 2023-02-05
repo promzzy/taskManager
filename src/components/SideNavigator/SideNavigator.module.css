@@ -4,13 +4,21 @@
   background-color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
   transition: 1s ease;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  z-index: 10;
+  position: relative;
 }
 .sideNavTop{
-  background-color: #011B60;
+  background-color: #0A5FFF;
   width: 100%;
   height: 45px;
   color: #FFFFFF;
   position: relative;
+}
+.navWrap{
+  flex: 1px;
 }
 .isCollaps{
   margin-left: -120px;
@@ -19,15 +27,27 @@
 .tuggleContainer{
   position: absolute;
   right: 0;
-  top: 5%;
-  margin-right: -35px;
+  top: 10px;
+  margin-right: -18px;
   transition: 1s ease;
   background-color: transparent;
   color: #FFFFFF;
   border: none;
+  background-color: #FD6920;
+  height: 26px;
+  width: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px dashed #FFFFFF;
+  cursor: pointer;
+}
+.tuggleContainer:hover{
+  transform: scale(1.05);
 }
 .tuggleIcon{
-  font-size: 2.5em;
+  font-size: 2em;
 }
 .routeBtn{
   display: flex;
@@ -35,19 +55,58 @@
   align-items: center;
   padding: 20px 0px;
   cursor: pointer;
-  margin: 7px 0px;
+  margin-bottom: 10px;
   width: 100%;
   border: none;
   background-color: transparent;
   font-size: 1em;
   font-weight: 500;
+  position: relative;
+}
+.pointer{
+  position: absolute;
+  width: 10px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  height: 5px;
+  background-color: #0850D4;
+  right: 0;
+  top: 43%;
+  display: none;
+}
+.isActive .pointer{
+  display: block;
 }
 .routeBtn:hover{
-  background-color: #FD6820;
-  color: #FFFFFF;
+  background-color: #00000029;
+  color: #000;
 }
 .isActive{
   border-right: 3px solid #0850D4;
+}
+.imgLogo{
+  width: 75px;
+}
+.profileWrap{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profileImage{
+  height: 100%;
+  width: 100%;
+}
+.profileBtn{
+  border-radius: 50%;
+  border: 1px dashed rgba(0,0,0,0.5);
+  padding: 5px;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+.profileBtn:hover{
+  transform: scale(1.06);
 }
 
 /* ------------------------------------------------------------------------------------------------

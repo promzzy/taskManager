@@ -1,11 +1,14 @@
+import { TaskProps } from "../../utils/types"
+
 export type TaskTableProps = {
    title?: string,
   assigneeIcon?: string,
   dueDate?: string,
     assigneeFirstName: string,
   assigneeLastName: string,
-  taskOptions: number[],
+  taskOptions: TaskProps[],
   tableTitl: string,
-  onClick?: () => void
-  createTaskClick?: () => void
+  onClick?: any,
+  createTaskClick?: () => void,
+  className?: string,
 }

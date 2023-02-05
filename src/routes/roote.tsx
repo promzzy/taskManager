@@ -4,6 +4,7 @@ import DashboardLayout from "../pages/DashboardLayout";
 import ForgotPassword from "../pages/ForgotPassword";
 import Login from "../pages/Login";
 import Members from "../pages/Members";
+import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import Taskboard from "../pages/Taskboard";
 import { paths } from "./paths";
@@ -61,6 +62,10 @@ import PrivateRoute from "./PrivateRoute";
       {
         path: paths.editMember,
         element: <Members />
+      },
+      {
+        path: paths.profile,
+        element: <Profile />
       },
     ],
   },

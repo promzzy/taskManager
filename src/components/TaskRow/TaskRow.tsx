@@ -8,19 +8,23 @@ const TaskRow: FC<TaskRowProps> = ({
   description,
   status,
   date,
+  firstName,
+  lastName,
+  className,
+  onClick,
 }) => {
 
 
 
-  return(<div className={classes.taskRowRoot}>
+  return(<div onClick={onClick} className={`${classes.taskRowRoot} ${className}`}>
    <div className={classes.cardLeft}>
      <h4 className={classes.taskTitle}>{title}</h4>
     <div className={classes.taskDesc}>{description}</div>
    </div>
    <ProfileIcon
       className={classes.profileIcon}
-      firstName="Promise"
-      lastName="Stephen"
+      firstName={firstName}
+      lastName={lastName}
     />
    <div className={classes.cardRight}>
     <button className={`${classes.taskStatus} ${classes[status]}`}>{status}</button>

@@ -24,20 +24,36 @@ function usePopRoutes(){
 
   useEffect(() => {
     if (/\/add-member\/?/g.test(location.pathname)){
-     reduxDispatch(setPopupComponent(<ManagerTeamMember />))
-     reduxDispatch(showPopup(true))
+     reduxDispatch(setPopupComponent(<ManagerTeamMember onClose={() => {
+      onCloseDrawer()
+      reduxDispatch(showPopup({ispopupOpen: false}))
+    }} />))
+     reduxDispatch(showPopup({ispopupOpen: true, onClose: () => onCloseDrawer() }))
     }
     if (/\/edit-member\/?/g.test(location.pathname)){
-      reduxDispatch(setPopupComponent(<ManagerTeamMember isEdit />))
-      reduxDispatch(showPopup(true))
+      reduxDispatch(setPopupComponent(<ManagerTeamMember onClose={
+        () => {
+      onEditDrawer()
+      reduxDispatch(showPopup({ispopupOpen: false}))
+    }
+      } isEdit />))
+      reduxDispatch(showPopup({ispopupOpen: true, onClose: () => onEditDrawer() }))
     }
     if (/\/create-task\/?/g.test(location.pathname)){
-      reduxDispatch(setPopupComponent(<ManageTask />))
-     reduxDispatch(showPopup(true))
+      reduxDispatch(setPopupComponent(<ManageTask onClose={() => {
+      onCloseDrawer()
+      reduxDispatch(showPopup({ispopupOpen: false}))
+    }} />))
+     reduxDispatch(showPopup({ispopupOpen: true, onClose: () => onCloseDrawer()}))
     }
     if (/\/edit-task\/?/g.test(location.pathname)){
-      reduxDispatch(setPopupComponent(<ManageTask isEdit />))
-      reduxDispatch(showPopup(true))
+      reduxDispatch(setPopupComponent(<ManageTask onClose={
+        () => {
+      onEditDrawer()
+      reduxDispatch(showPopup({ispopupOpen: false}))
+    }
+      } isEdit />))
+      reduxDispatch(showPopup({ispopupOpen: true, onClose: () => onEditDrawer()}))
     }
   }, [location.pathname])
 }

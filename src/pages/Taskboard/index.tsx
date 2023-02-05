@@ -4,7 +4,10 @@ import Taskboard from './Taskboard';
 import {DispatchType, RootState} from '../../redux/types'
 import { ReactElement } from 'react';
 
-const mapStates = ({}: RootState) => ({});
+const mapStates = ({user}: RootState) => ({
+  myTeam: user.team,
+  task: user.task,
+});
 
 const mapDispatch = (dispatch: DispatchType) => ({
   showPopup: (data: boolean) => dispatch(showPopup(data)),

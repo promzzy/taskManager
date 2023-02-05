@@ -1,6 +1,8 @@
+import { userInfo } from "../../utils/types";
+
 export type TeamSlideProps = {
   teamName?: string,
-  teamMembers?: (number | undefined)[],
+  teamMembers?: userInfo[],
   onAddMember?: () => void,
-  onViewMember?: () => void,
+  onViewMember?: any,
 }

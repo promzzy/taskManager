@@ -4,18 +4,16 @@ import classes from './TaskTable.module.css';
 import { TaskTableProps } from "./types";
 
 const TaskTable: FC<TaskTableProps> = ({
-  title,
   assigneeIcon,
   dueDate,
-  assigneeFirstName = "",
-  assigneeLastName = "",
   taskOptions = [],
   tableTitl,
   onClick,
   createTaskClick,
+  className,
 }) => {
   return(
-  <div className={classes.rowRoot}>
+  <div className={`${classes.rowRoot} ${className}`}>
     <table width="100%">
       <thead>
           <th className={classes.theadTitle}>
@@ -23,14 +21,14 @@ const TaskTable: FC<TaskTableProps> = ({
             <span>{`${taskOptions?.length} TASKS`}</span>
             </th>
           <th>ASSIGNEE</th>
-          <th>DUE DATE</th>
+          <th>CREATED AT</th>
           <th>PRIORITY</th>
           <th>STATUS</th>
           <th></th>
       </thead>
       <tbody className={classes.tableBody}>
-        {taskOptions.map(_ =>(
-          <tr onClick={onClick} className={classes.tableRow}>
+        {taskOptions.map(({id, title, assignee, priority, status}) =>(
+          <tr onClick={() => onClick(id)} className={classes.tableRow}>
             <td>
               <div className={classes.taskColumn}>
               <input checked value="" type="checkbox" />
@@ -39,15 +37,15 @@ const TaskTable: FC<TaskTableProps> = ({
             </td>
             <td>
               <ProfileIcon
-                image={assigneeIcon}
-                firstName={assigneeFirstName}
-                lastName={assigneeLastName}
+                image=''
+                firstName={assignee?.firstName || '-'}
+                lastName={assignee?.lastName || '-'}
                />
             </td>
             <td>{dueDate}</td>
-            <td>date</td>
-            <td>date</td>
-            <td>date</td>
+            <td>{priority}</td>
+            <td>{status}</td>
+            <td>delete</td>
           </tr>
         ))}
         </tbody>

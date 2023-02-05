@@ -1,5 +1,5 @@
 .manageTaskRoot{
-  width: 40vw;
+  width: 50vw;
 }
 .taskTitleInput{
   border: none;
@@ -43,4 +43,15 @@ flex-direction: column;
   width: 40%;
   background-color: #F4F5F9;
   border: none;
+}
+
+
+/* ------------------------------------------------------------------------------------------------
+                              MEDIA QUERY
+------------------------------------------------------------------------------------------------ */
+
+@media (max-width: 970px) {
+.manageTaskRoot{
+  width: 80vw;
+}
 }

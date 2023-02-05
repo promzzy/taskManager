@@ -4,4 +4,8 @@ export type TaskRowProps = {
   status: string,
   category: string,
   date: string,
+  firstName: string,
+  lastName: string,
+  className?: string,
+  onClick?: () => void,
 }

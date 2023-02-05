@@ -6,7 +6,7 @@ import useRegister from "./hooks/useRegister";
 import classes from "./Register.module.css";
 
 const Register: FC = () => {
-  const { state, dispatch, history } = useRegister();
+  const { state, dispatch, history, handleRegister, } = useRegister();
   const { firstName, lastName, email, password, phoneNumber } = state;
   return (
     <AuthWrapper onClick={() => history("/")} type="REGISTER">
@@ -67,7 +67,7 @@ const Register: FC = () => {
             />
           </div>
           <div className={classes.buttonBox}>
-            <Button>Sign up</Button>
+            <Button onClick={handleRegister}>Sign up</Button>
           </div>
         </form>
       </div>

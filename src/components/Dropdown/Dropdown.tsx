@@ -5,21 +5,30 @@ import classes from './Dropdown.module.css'
 const Dropdown: FC<DropdownProps> = ({
   options = [],
   className,
-  placeholder
+  placeholder,
+  name,
+  value,
+  onChange
 }) => {
   return(
-  <select
-   name="cars"
-    id="cars"
+<div style={{width: '100%'}}>
+  <label>{placeholder}</label>
+    <select
+   name={name}
+    id="select"
+    value={value}
+    onChange={onChange}
     className={`${classes.selector} ${className}`}
     placeholder={placeholder}
     >
+     <option value="none">Non</option>
   {
     options.map(option => (
-      <option value="volvo">{option.name}</option>
+      <option value={option.id}>{option.name}</option>
     ))
   }
 </select>
+</div>
   )
 }
 

@@ -2,25 +2,32 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
-  currentUser: {},
+  currentUser: null,
+  team: [],
+  task: [],
 }
 
 
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: 'user',
   initialState,
   reducers: {
-    increment: (state) => { },
-    decrement: (state) => {},
-    incrementByAmount: (state, action) => {
-      console.log(action)
+    setUserData: (state, action) => {
+      state.currentUser = action.payload
     },
+    setTeamMember: (state, action) => {
+      state.team = action.payload
+    },
+    setTask: (state, action) => {
+      state.task = action.payload
+    },
+
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { setUserData, setTeamMember, setTask } = counterSlice.actions
 
 export default counterSlice.reducer
 

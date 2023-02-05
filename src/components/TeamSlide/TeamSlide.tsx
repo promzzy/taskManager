@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { userInfo } from "../../utils/types";
 import ProfileIcon from "../ProfileIcon";
 import classes from './TeamSlide.module.css';
 import { TeamSlideProps } from "./types";
@@ -11,12 +12,12 @@ const TeamSlide: FC<TeamSlideProps> = ({
 }) => {
   return(<div className={classes.sliderRoot}>
     <h5 className={classes.teamTitle}>{teamName}</h5>
-    <div className={classes.membersContainer}>{teamMembers.map(_ => (
+    <div className={classes.membersContainer}>{teamMembers.map((member: userInfo) => (
         <ProfileIcon
-          onClick={onViewMember}
+          onClick={() => onViewMember(member?.id)}
           className={classes.teamMember}
-          firstName="promise"
-          lastName="stephen"
+          firstName={member.firstName}
+          lastName={member.lastName}
         />
     ))}
     <button onClick={onAddMember} className={classes.addMemberBtn}>+</button>

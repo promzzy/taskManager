@@ -1,1 +1,9 @@
-export { default} from './Dashboard';
+import { connect } from "react-redux";
+import Dashboard from './Dashboard'
+import { RootState} from '../../redux/types'
+
+const mapStates = ({user}: RootState ) => ({
+  currentUser: user.currentUser,
+});
+
+export default connect(mapStates)(Dashboard);
