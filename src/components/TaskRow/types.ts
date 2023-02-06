@@ -1,6 +1,6 @@
 export type TaskRowProps = {
   title: string,
-  description: string,
+  description?: string,
   status: string,
   category: string,
   date: string,
@@ -8,4 +8,5 @@ export type TaskRowProps = {
   lastName: string,
   className?: string,
   onClick?: () => void,
+  onDelete?: any,
 }

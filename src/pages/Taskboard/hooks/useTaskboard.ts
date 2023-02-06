@@ -1,59 +1,68 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setTask } from "../../../redux/features/userSlice";
 import { RootState } from "../../../redux/types";
 import { paths } from "../../../routes/paths";
 import authService from "../../../services/auth.service";
-import { userInfo } from "../../../utils/types";
+import taskService from "../../../services/task.service";
+import useAuth from "../../../utils/hooks/useAuth";
+import { TaskProps, userInfo } from "../../../utils/types";
 
-function useTaskboard(){
-  const history = useNavigate()
-const [viewPort, setViewPort] = useState<SetStateAction<number>>(0);
+function useTaskboard() {
+  const history = useNavigate();
 
-     const { currentUser }: any = useSelector((reduxState: RootState) => reduxState.user)
-    const reduxDispatch = useDispatch()
+  const { currentUser, task }: any = useSelector(
+    (reduxState: RootState) => reduxState.user
+  );
+  const reduxDispatch = useDispatch();
+  const { getUserData } = useAuth()
 
+  useEffect(() => {
+    const users: any = authService.onLogin();
+    users.then(({ USER }: any) => {
+      const logedInUser = USER.find(
+        (item: userInfo) => item.id === currentUser.id
+      );
+      reduxDispatch(setTask(logedInUser?.task || []));
+    });
+  }, []); // eslint-disable-line
 
-     useEffect(() => {
-    window.addEventListener("resize", () => {
-       setViewPort(window.innerWidth)
-
-    })
-},[window.innerWidth]);
-
-     useEffect(() => {
-     const users: any = authService.onLogin()
-      users.then(({USER}: any) => {
-        const logedInUser = USER.find((item: userInfo) => item.id === currentUser.id)
-          reduxDispatch(setTask(logedInUser?.task || []))
-      })
-  }, [])
-
-    function handleEditTask(id?: number,){
-    history(paths.editTask.replace(':taskId', `${id}`))
+  function handleEditTask(id?: number) {
+    history(paths.editTask.replace(":taskId", `${id}`));
   }
 
-    function createTask(){
-    history(paths.createTask)
+  function createTask() {
+    history(paths.createTask);
   }
 
-  function addMember(){
-    history(paths.taskAddMember)
+  function addMember() {
+    history(paths.taskAddMember);
   }
 
-      function editMember(id?: number){
-    history(paths.taskEditMember.replace(':memberId', `${id}`))
+  function editMember(id?: number) {
+    history(paths.taskEditMember.replace(":memberId", `${id}`));
   }
 
+  function deleteTask(id?: number) {
+    const remvoveById = task.filter((item: TaskProps) => item.id !== id);
 
-  return{
-    viewPort,
+    const service: any = taskService.createTask({
+      ...currentUser,
+      task: remvoveById,
+    });
+    service.then(() => {
+      getUserData();
+    });
+  }
+
+  return {
     handleEditTask,
     createTask,
     addMember,
     editMember,
-  }
+    deleteTask,
+  };
 }
 
 export default useTaskboard;

@@ -1,7 +1,9 @@
 import { FC } from "react";
+import { colorsGenerator, dateFormate, sentenceCase } from "../../utils/helpers";
 import ProfileIcon from "../ProfileIcon";
 import classes from './TaskTable.module.css';
 import { TaskTableProps } from "./types";
+import deleteIcon from '../../assets/svg/icon-delete.svg'
 
 const TaskTable: FC<TaskTableProps> = ({
   assigneeIcon,
@@ -11,6 +13,7 @@ const TaskTable: FC<TaskTableProps> = ({
   onClick,
   createTaskClick,
   className,
+  onDelete,
 }) => {
   return(
   <div className={`${classes.rowRoot} ${className}`}>
@@ -27,7 +30,7 @@ const TaskTable: FC<TaskTableProps> = ({
           <th></th>
       </thead>
       <tbody className={classes.tableBody}>
-        {taskOptions.map(({id, title, assignee, priority, status}) =>(
+        {taskOptions.map(({id, createdAt, title, assignee, priority, status}) =>(
           <tr onClick={() => onClick(id)} className={classes.tableRow}>
             <td>
               <div className={classes.taskColumn}>
@@ -42,10 +45,22 @@ const TaskTable: FC<TaskTableProps> = ({
                 lastName={assignee?.lastName || '-'}
                />
             </td>
-            <td>{dueDate}</td>
+            <td>{dateFormate(createdAt)}</td>
             <td>{priority}</td>
-            <td>{status}</td>
-            <td>delete</td>
+            <td>
+              <button className={classes.taskStatus} style={{backgroundColor: colorsGenerator(status)}}>{sentenceCase(status)}</button>
+            </td>
+            <td>
+              <button
+              className={classes.deleteBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(id)
+              }}
+              >
+                <img src={deleteIcon} alt='' height="18px" />
+              </button>
+            </td>
           </tr>
         ))}
         </tbody>

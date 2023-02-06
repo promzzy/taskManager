@@ -4,10 +4,11 @@ import waveImage from '../../assets/svg/wave.svg'
 import InputField from "../../components/InputField";
 import TextArea from "../../components/TextArea";
 import useProfile from "./hooks/useProfile";
+import Button from "../../components/Button";
 
 const Profile: FC = () => {
 
-  const {state, dispatch} = useProfile()
+  const {state, dispatch, onUpdateProfile} = useProfile()
 
     const {
   firstName,
@@ -20,7 +21,8 @@ const Profile: FC = () => {
   return(
         <div className={classes.pageRoot}>
        <div className={classes.loginBody}>
-        <form className={classes.form}>
+        <h3>User Profile</h3>
+      <form className={classes.form}>
                  <div className={classes.inputWrap}>
       <div className={classes.inputRow}>
         <InputField
@@ -63,6 +65,9 @@ const Profile: FC = () => {
           />
           </div>
         </form>
+        <div>
+            <Button onClick={onUpdateProfile} className={classes.updateProfile}>Update</Button>
+        </div>
        </div>
        <img src={waveImage} className={classes.imageBg} alt="" />
     </div>

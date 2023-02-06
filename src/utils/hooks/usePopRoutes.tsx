@@ -55,7 +55,7 @@ function usePopRoutes(){
       } isEdit />))
       reduxDispatch(showPopup({ispopupOpen: true, onClose: () => onEditDrawer()}))
     }
-  }, [location.pathname])
+  }, [location.pathname]) // eslint-disable-line
 }
 
 export default usePopRoutes;

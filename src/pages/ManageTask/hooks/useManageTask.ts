@@ -1,12 +1,12 @@
 import { Reducer, useEffect, useMemo, useReducer } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/types";
 import taskService from "../../../services/task.service";
 import { TaskProps, userInfo } from "../../../utils/types";
 import { HooksProps, ReducerProps } from "../types";
-import { setTask } from '../../../redux/features/userSlice'
-import authService from "../../../services/auth.service";
 import { useParams } from "react-router-dom";
+import moment from "moment";
+import useAuth from "../../../utils/hooks/useAuth";
 
 function useManageTask({
   isEdit,
@@ -16,8 +16,8 @@ function useManageTask({
     const { currentUser, task, team }: any = useSelector(
     (reduxState: RootState) => reduxState.user
   );
+  const { getUserData } = useAuth();
 const {taskId} = useParams()
-  const reduxDispatch = useDispatch()
   const initialState = {
   title: '',
   assignee: null,
@@ -46,15 +46,6 @@ const {taskId} = useParams()
 
 
     const allMembers = useMemo(() => team.map((item: userInfo) => ({...item, name: `${item.firstName} ${item.lastName}`})), [team])
-  function getUserData() {
-    const users: any = authService.onLogin();
-    users.then(({ USER }: any) => {
-      const logedInUser = USER.find(
-        (item: userInfo) => item.id === currentUser.id
-      );
-      reduxDispatch(setTask(logedInUser?.task || []));
-    });
-  }
 
    useEffect(() => {
     if (!isEdit) {
@@ -62,7 +53,8 @@ const {taskId} = useParams()
           title: '',
           assignee: null,
           dueDate: '',
-        status: '',
+          createdAt: moment(),
+          status: '',
           priority: '',
         description: '',
       })
@@ -71,13 +63,15 @@ const {taskId} = useParams()
     const findselectedTask = task.find(
       (item: TaskProps) => item.id === Number(taskId))
     dispatch({
+      ...findselectedTask,
   title: findselectedTask?.title,
   assignee: findselectedTask?.assignee,
   dueDate: '',
+  createdAt: findselectedTask?.createdAt || moment(),
   status: findselectedTask?.status,
   description: findselectedTask?.description,
     });
-  }, [isEdit, taskId]);
+  }, [isEdit, taskId]); // eslint-disable-line
 
     function createTask(){
     const oldTask = (task || []).filter((item: userInfo) => item.id !== Number(taskId));

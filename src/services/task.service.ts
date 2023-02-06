@@ -8,6 +8,8 @@ function createTask(params: any){
   return request(KEY.users, params, 'POST' )
 }
 
-export default {
+const taskService = {
   createTask,
 }
+
+export default taskService;

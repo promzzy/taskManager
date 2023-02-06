@@ -1,4 +1,4 @@
-import { RxDashboard } from "react-icons/rx";
+import { RxDashboard } from "react-icons/rx";// eslint-disable-line
 
 export const navPaths = [
   {

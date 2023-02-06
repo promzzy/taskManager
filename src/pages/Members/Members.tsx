@@ -11,9 +11,7 @@ const Members: FC<MembersProps> = ({
 }) => {
 
   const history = useNavigate()
-  useMembers();
-
-  console.log(myTeam)
+   const { deleteMember} = useMembers();
 
   return(<div className={classes.pageRoot}>
     <TeamSlide
@@ -28,6 +26,7 @@ const Members: FC<MembersProps> = ({
             email={member?.email}
             phoneNumber={member?.phoneNumber}
             onClick={() => history(`/members/edit-member/${member.id}`)}
+            onDelete={() => deleteMember(member.id)}
             />
         ))
       }

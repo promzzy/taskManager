@@ -9,6 +9,7 @@ export type TaskTableProps = {
   taskOptions: TaskProps[],
   tableTitl: string,
   onClick?: any,
+  onDelete: any,
   createTaskClick?: () => void,
   className?: string,
 }

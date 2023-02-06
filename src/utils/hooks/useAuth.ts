@@ -1,11 +1,14 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { setTask, setTeamMember, setUserData } from "../../redux/features/userSlice"
+import { RootState } from "../../redux/types"
 import authService from "../../services/auth.service"
 import { errorCatch, userInfo } from "../types"
 
 function useAuth(){
-
+    const { currentUser }: any = useSelector(
+    (reduxState: RootState) => reduxState.user
+  );
   const reduxDispatch = useDispatch()
   const history = useNavigate()
 
@@ -36,7 +39,18 @@ function useAuth(){
 
   }
 
-  return { logOut, login }
+  function getUserData(){
+         const users: any = authService.onLogin()
+      users.then(({USER}: any) => {
+        const logedInUser = USER.find((item: userInfo) => item.id === currentUser.id)
+          reduxDispatch(setUserData(logedInUser))
+           reduxDispatch(setTask(logedInUser?.task || []));
+           reduxDispatch(setTeamMember(logedInUser?.team || []))
+
+      })
+  }
+
+  return { logOut, login, getUserData }
 }
 
 export default useAuth

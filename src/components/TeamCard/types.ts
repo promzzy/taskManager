@@ -3,4 +3,5 @@ export type TeamCardProps = {
   name: string,
   phoneNumber: string,
   email: string,
+  onDelete: any,
 }

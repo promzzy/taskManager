@@ -11,7 +11,14 @@ function onLogin(){
  return request(KEY.users, {}, 'GET' )
 }
 
-export default {
+function updateProfile(params: any){
+  return request(KEY.users, params, 'POST' )
+}
+
+const authService = {
   onRegister,
   onLogin,
+  updateProfile,
 }
+
+export default authService;

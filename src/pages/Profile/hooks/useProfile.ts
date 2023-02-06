@@ -1,9 +1,14 @@
 import { Reducer, useEffect, useReducer } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/types";
+import authService from "../../../services/auth.service";
+import useAuth from "../../../utils/hooks/useAuth";
 import { ReducerState } from "../types";
 
 function useProfile(){
+
+  const { getUserData } = useAuth()
+
 const { currentUser }: any = useSelector(
     (reduxState: RootState) => reduxState.user
   );
@@ -20,15 +25,20 @@ const { currentUser }: any = useSelector(
   );
 
   useEffect(() => {
-    dispatch({
-    firstName: currentUser?.firstName,
-    lastName: currentUser?.lastName,
-    email: currentUser?.email,
-    phoneNumber: currentUser?.phoneNumber,
-    })
+    dispatch(currentUser)
   }, [currentUser])
+  function onUpdateProfile(){
+        const addTask: any = authService.updateProfile({
+           ...currentUser, ...state
+      })
 
-  return{ state, dispatch}
+      addTask.then(() => {
+        getUserData()
+        alert('saved successfully')
+      })
+  }
+
+  return{ state, dispatch, onUpdateProfile}
 }
 
 

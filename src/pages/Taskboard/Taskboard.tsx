@@ -2,6 +2,7 @@ import { FC } from "react";
 import TaskRow from "../../components/TaskRow";
 import TaskTable from "../../components/TaskTable";
 import TeamSlide from "../../components/TeamSlide";
+import { dateFormate } from "../../utils/helpers";
 import useTaskboard from "./hooks/useTaskboard";
 import classes from './Taskboard.module.css'
 import { TaskBoardProps } from "./types";
@@ -10,7 +11,7 @@ const Taskboard: FC<TaskBoardProps> = ({
   myTeam = [],
   task = []
 }) => {
-  const { viewPort, handleEditTask, createTask, addMember, editMember } = useTaskboard()
+  const { handleEditTask, createTask, addMember, editMember, deleteTask } = useTaskboard()
 
 
   return (<div className={classes.boardRoot}>
@@ -32,6 +33,7 @@ const Taskboard: FC<TaskBoardProps> = ({
         assigneeFirstName = "promise"
         assigneeLastName = "stephen"
         taskOptions={task}
+        onDelete={deleteTask}
        />
 
       <div className={classes.taskMobileScrren}>
@@ -44,9 +46,10 @@ const Taskboard: FC<TaskBoardProps> = ({
                   description=''
                   status={item.status}
                   category=""
-                  date={item.createdAt}
+                  date={dateFormate(item.createdAt)}
                   firstName={item.assignee.firstName}
                   lastName={item.assignee.lastName}
+                  onDelete={() => deleteTask(item.id)}
                 />
               ))
            } </div>

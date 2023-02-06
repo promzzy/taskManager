@@ -8,6 +8,8 @@ function addTeamMember(params: any){
   return request(KEY.users, params, 'POST' )
 }
 
-export default {
+const teamService = {
   addTeamMember,
 }
+
+export default teamService;

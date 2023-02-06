@@ -79,3 +79,18 @@ input{
   background-color: #BEEAC9;
   color: #fff;
 }
+.deleteBtn{
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+.taskStatus{
+  font-size: .7em;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 3px 15px;
+  border-radius: 3px;
+  border: 1px dashed #fff;
+  color: #Ffffff;
+}

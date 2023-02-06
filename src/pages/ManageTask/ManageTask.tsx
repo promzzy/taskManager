@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import InputField from "../../components/InputField";
 import classes from './ManageTask.module.css'
 import Button from "../../components/Button";
@@ -18,9 +18,7 @@ const ManageTask: FC<ManageTaskProps> = ({
   const {
       title,
       assignee,
-      dueDate,
       status,
-      priority,
       description,
   } = state;
 

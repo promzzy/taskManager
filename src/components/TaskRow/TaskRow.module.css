@@ -32,6 +32,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
 }
 .taskStatus{
   margin-top: -15px;
@@ -41,19 +43,15 @@
   padding: 3px 15px;
   border-radius: 3px;
   border: 1px dashed #fff;
-}
-.upcoming{
-  background-color: #af0909c6;
-  color: #Ffffff;
-}
-.progress{
-  background-color: #FD6820;
-  color: #Ffffff;
-}
-.completed{
-  background-color: #005C17;
   color: #Ffffff;
 }
 .profileIcon{
   margin-top: 15px;
+}
+.deleteBtn{
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 20px;
 }

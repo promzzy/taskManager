@@ -6,14 +6,20 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 10px;
 }
 .pageRoot:hover{
 /* transform: scale(1.01); */
 }
+.bodyLeft{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .imageWrapper{
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
 }
 .memberName{
   font-size: 1em;
@@ -29,4 +35,10 @@
     font-size: 1em;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.503);
+}
+.deleteBtn{
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
 }

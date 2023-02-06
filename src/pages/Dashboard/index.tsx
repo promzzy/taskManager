@@ -4,6 +4,7 @@ import { RootState} from '../../redux/types'
 
 const mapStates = ({user}: RootState ) => ({
   currentUser: user.currentUser,
+  task: user.task,
 });
 
 export default connect(mapStates)(Dashboard);
