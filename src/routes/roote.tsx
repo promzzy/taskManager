@@ -32,6 +32,10 @@ import PrivateRoute from "./PrivateRoute";
         element: <Dashboard />
       },
       {
+        path: paths.dashboardCreateTask,
+        element: <Dashboard />
+      },
+      {
         path: paths.taskBoard,
         element: <Taskboard />
       },

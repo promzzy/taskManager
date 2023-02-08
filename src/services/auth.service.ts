@@ -5,7 +5,7 @@ const KEY = {
 }
 
 function onRegister(params: any){
-  return request(KEY.users, params, 'POST' )
+  return request(KEY.users, params, 'POST', 'REGISTER' )
 }
 function onLogin(){
  return request(KEY.users, {}, 'GET' )

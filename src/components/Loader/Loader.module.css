@@ -1,0 +1,37 @@
+@keyframes loader-animation {
+    0% {
+        background-color: #0404e1;
+        width: 5%;
+      }
+      25% {
+        background-color: #0404e1;
+        width: 30%;
+      }
+      50% {
+        background-color: #0404e1;
+        width: 50%;
+      }
+      75% {
+        background-color: #0404e1;
+        width: 70%;
+      }
+      100% {
+        background-color: #0404e1;
+        width: 100%;
+      }
+
+}
+.loaderRoot{
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background-color: transparent;
+  width: 100%;
+  z-index: 99;
+   animation: loader-animation infinite 2s ease;
+   display: none;
+}
+.onLoading{
+  display: block;
+}

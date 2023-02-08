@@ -13,6 +13,7 @@ const InputField: FC<InputFieldProps> = ({
   type,
   password,
   name,
+  required,
   ...props
 }) => {
   const [showPassword, setShowPasssword] = useState(false)
@@ -24,6 +25,7 @@ const InputField: FC<InputFieldProps> = ({
     value={value}
     name={name}
     onChange={onChange}
+    required={required}
     placeholder={placeholder}
     { ...props }
     />

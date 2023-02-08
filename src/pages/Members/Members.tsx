@@ -18,7 +18,7 @@ const Members: FC<MembersProps> = ({
       teamName='Team Members'
       onAddMember={() => {history("/members/add-member")}}
      />
-     <div className={classes.mainBody}>
+     {myTeam?.length ? <div className={classes.mainBody}>
       {
         myTeam.map(member =>(
           <TeamCard
@@ -31,6 +31,11 @@ const Members: FC<MembersProps> = ({
         ))
       }
      </div>
+     :
+     <div className={classes.emptyList}>
+      <h3>No Team Member Found</h3>
+     </div>
+     }
   </div>)
 }
 

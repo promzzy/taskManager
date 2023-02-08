@@ -8,14 +8,20 @@ import TaskRow from "../../components/TaskRow";
 import { DashboardProps } from "./types";
 import { TaskProps } from "../../utils/types";
 import { dateFormate, whichHour } from "../../utils/helpers";
+import { useNavigate } from "react-router-dom";
+import { paths } from "../../routes/paths";
+import moment from "moment";
 
 const Dashboard: FC<DashboardProps> = ({
   currentUser,
   task = [],
 }) => {
-  const upcomingTask: TaskProps[] = task?.filter((item: TaskProps) => item.status === 'UPCOMING')
-  const inProgressTask: TaskProps[] = task?.filter((item: TaskProps) => item.status === 'INPROGRESS')
-  const completedTask: TaskProps[] = task?.filter((item: TaskProps) => item.status === 'COMPLETED')
+  const history = useNavigate()
+
+  const taskByStatus = (status: string) => task?.filter((item: TaskProps) => item.status === status)
+
+  const dueToday = task?.filter((item: TaskProps) => moment(item.dueDate).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD'))
+  const newTaskArry = (type: string) => task?.filter((item: TaskProps) => item.priority === type)
   return (
     <div className={classes.dashboardRoot}>
       <div>
@@ -28,43 +34,74 @@ const Dashboard: FC<DashboardProps> = ({
             <InfoCard
             title="Upcoming"
             icon={(<img src={todoIcon} alt="" />)}
-            description={`${upcomingTask?.length} Task Remaining`}
-            onClick={() => {}}
+            description={`${taskByStatus('UPCOMING')?.length} Task Remaining`}
+            onClick={() => {
+              history(`${paths.dashboardCreateTask}?type=UPCOMING`)
+            }}
             className={classes.todoTasks}
              />
             <InfoCard
              title="In Progress"
              icon={(<img src={inProgress} alt="" />)}
-             description={`${inProgressTask.length} Task in progress`}
-             onClick={() => {}}
+             description={`${taskByStatus('INPROGRESS')?.length} Task in progress`}
+             onClick={() => {
+              history(`${paths.dashboardCreateTask}?type=INPROGRESS`)
+             }}
               className={classes.inProgress}
                />
             <InfoCard
             title="Completed"
              icon={(<img src={completedIcon} alt="" />)}
-            description={`${completedTask.length} Task completed`}
-            onClick={() => {}}
+            description={`${taskByStatus('COMPLETED')?.length} Task completed`}
+            onClick={() => {
+              history(`${paths.dashboardCreateTask}?type=COMPLETED`)
+            }}
             className={classes.completed}
              />
           </div>
           <div>
             <h3 className={classes.sectionTitle}>Today Tasks</h3>
-            <div>{
-              task.map((item) =>(
+            {dueToday.length ? <div>{
+              dueToday.map((item) =>(
                 <TaskRow
                   title={item.title}
-                  description={item.description}
                   status={item.status}
-                  category=""
+                  priority={item.priority}
                   date={dateFormate(item.createdAt)}
-                  firstName={item.assignee.firstName}
-                  lastName={item.assignee.lastName}
+                  firstName={item?.assignee?.firstName}
+                  lastName={item?.assignee?.lastName}
                 />
               ))
            } </div>
+           :
+           <div className={classes.noTaskNotice}>
+            <h3>No Task For Today</h3>
+           </div>
+          }
           </div>
         </div>
-        <div className={classes.rightBodySection}></div>
+        <div className={classes.rightBodySection}>
+            <InfoCard
+             title="Urgent"
+             description={`${newTaskArry('URGENT')?.length} Urgent Priority Task Available `}
+              className={classes.taskBreakdown}
+            />
+            <InfoCard
+             title="High"
+             description={`${newTaskArry('HIGH')?.length} High Priority Task Available`}
+              className={classes.taskBreakdown}
+            />
+            <InfoCard
+             title="Normal"
+             description={`${newTaskArry('NORMAL')?.length} Normal Priority Task Available`}
+              className={classes.taskBreakdown}
+            />
+            <InfoCard
+             title="Low"
+             description={`${newTaskArry('LOW')?.length} Low Priority Task Available`}
+              className={classes.taskBreakdown}
+            />
+        </div>
       </p>
     </div>
   )

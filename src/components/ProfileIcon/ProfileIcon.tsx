@@ -8,7 +8,7 @@ const ProfileIcon: FC<profileIconProps> = ({ firstName, lastName, className, ima
       {image ? (
         <img src={image} alt="" />
       ) : (
-        `${firstName?.charAt(0)}${lastName?.charAt(0)}`
+        `${firstName?.charAt(0) || '-'}${lastName?.charAt(0) || '-'}`
       )}
     </span>
   );

@@ -7,7 +7,6 @@ import deleteIcon from '../../assets/svg/icon-delete.svg'
 
 const TaskTable: FC<TaskTableProps> = ({
   assigneeIcon,
-  dueDate,
   taskOptions = [],
   tableTitl,
   onClick,
@@ -24,13 +23,13 @@ const TaskTable: FC<TaskTableProps> = ({
             <span>{`${taskOptions?.length} TASKS`}</span>
             </th>
           <th>ASSIGNEE</th>
-          <th>CREATED AT</th>
+          <th>Due Date</th>
           <th>PRIORITY</th>
           <th>STATUS</th>
           <th></th>
       </thead>
       <tbody className={classes.tableBody}>
-        {taskOptions.map(({id, createdAt, title, assignee, priority, status}) =>(
+        {taskOptions.map(({id, createdAt, dueDate, title, assignee, priority, status}) =>(
           <tr onClick={() => onClick(id)} className={classes.tableRow}>
             <td>
               <div className={classes.taskColumn}>
@@ -45,8 +44,15 @@ const TaskTable: FC<TaskTableProps> = ({
                 lastName={assignee?.lastName || '-'}
                />
             </td>
-            <td>{dateFormate(createdAt)}</td>
-            <td>{priority}</td>
+            <td>{dateFormate(dueDate)}</td>
+            <td>
+              <button className={classes.priorityText}
+              style={{
+                backgroundColor: colorsGenerator(priority),
+                color: priority === 'LOW' ? '#011B60' : undefined
+                }}>
+                {sentenceCase(priority)}</button>
+            </td>
             <td>
               <button className={classes.taskStatus} style={{backgroundColor: colorsGenerator(status)}}>{sentenceCase(status)}</button>
             </td>
@@ -65,7 +71,7 @@ const TaskTable: FC<TaskTableProps> = ({
         ))}
         </tbody>
     </table>
-      <button onClick={createTaskClick} className={classes.newTaskBtn}>+ New task</button>
+      {/* <button onClick={createTaskClick} className={classes.newTaskBtn}>+ New task</button> */}
   </div>
   )
 }

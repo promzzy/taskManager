@@ -16,22 +16,18 @@ const Taskboard: FC<TaskBoardProps> = ({
 
   return (<div className={classes.boardRoot}>
     <TeamSlide
-      teamName='PromzzyTech'
+      teamName='Task Board'
       onAddMember={addMember}
       onViewMember={editMember}
       teamMembers={myTeam}
      />
-     <div style={{marginTop: 20}}>
+    { task.length ? <div style={{marginTop: 20}}>
       <TaskTable
         className={classes.taskTable}
         tableTitl="upcoming"
         onClick={handleEditTask}
         createTaskClick={createTask}
-        title="Fix personal performance"
         assigneeIcon=""
-        dueDate="2017-02-23"
-        assigneeFirstName = "promise"
-        assigneeLastName = "stephen"
         taskOptions={task}
         onDelete={deleteTask}
        />
@@ -43,18 +39,25 @@ const Taskboard: FC<TaskBoardProps> = ({
                   onClick={() => handleEditTask(item.id) }
                   className={classes.taskRowCard}
                   title={item.title}
-                  description=''
                   status={item.status}
-                  category=""
-                  date={dateFormate(item.createdAt)}
-                  firstName={item.assignee.firstName}
-                  lastName={item.assignee.lastName}
+                  priority={item.priority}
+                  date={dateFormate(item.dueDate)}
+                  firstName={item.assignee?.firstName}
+                  lastName={item.assignee?.lastName}
                   onDelete={() => deleteTask(item.id)}
                 />
               ))
-           } </div>
+           }
+           </div>
 
      </div>
+     :
+     <div className={classes.emptyList}>
+      <h3>No Task Was Created</h3>
+     </div>
+     }
+   <button onClick={createTask} className={classes.newTaskBtn}>+ New task</button>
+
   </div>)
 }
 

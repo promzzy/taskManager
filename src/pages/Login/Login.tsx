@@ -23,6 +23,7 @@ const Login: FC = () => {
               name="email"
               type="email"
               value={email}
+              required
               onChange={({ target }) => dispatch({ email: target.value })}
             />
           </div>
@@ -34,6 +35,7 @@ const Login: FC = () => {
               className={classes.input}
               placeholder="Enter your password"
               value={password}
+              required
               onChange={({ target }) => dispatch({ password: target.value })}
             />
           </div>

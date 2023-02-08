@@ -19,7 +19,7 @@
   flex: 1;
 }
 .leftBodySection{
-  flex: 2;
+  flex: 2.5;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 15px;
@@ -32,6 +32,14 @@
   padding: 15px;
   overflow: scroll;
   height: 86%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+.taskBreakdown{
+  background-color: #E0E0E0;
+  width: 85%;
 }
 .taskGroupings{
   display: flex;
@@ -49,6 +57,17 @@
 .sectionTitle{
   margin-top: 2.5em;
   font-weight: 500;
+}
+.noTaskNotice{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noTaskNotice h3{
+  font-size: 2em;
+  font-weight: 600;
+  opacity: .7;
 }
 
 /* ----------------------------------------------------------------------------------------------

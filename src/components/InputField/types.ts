@@ -9,4 +9,5 @@ export type InputFieldProps = {
   type?: string,
   password?: boolean,
   name?: string,
+  required?: boolean,
 }

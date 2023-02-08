@@ -55,3 +55,17 @@
   cursor: pointer;
   margin-right: 20px;
 }
+.priorityText{
+  border: none;
+  font-size: .8em;
+  font-weight: 400;
+  padding: 3px 10px;
+  color: #fff;
+  border-radius: 3px;
+  margin-top: 15px;
+}
+.middleBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

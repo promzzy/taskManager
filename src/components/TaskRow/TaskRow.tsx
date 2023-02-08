@@ -7,12 +7,12 @@ import deleteIcon from "../../assets/svg/icon-delete.svg";
 
 const TaskRow: FC<TaskRowProps> = ({
   title,
-  description,
   status,
   date,
   firstName,
   lastName,
   className,
+  priority,
   onClick,
   onDelete,
 }) => {
@@ -22,11 +22,20 @@ const TaskRow: FC<TaskRowProps> = ({
         <h4 className={classes.taskTitle}>{title}</h4>
         <div className={classes.cardDate}>{date}</div>
       </div>
+      <div className={classes.middleBox}>
       <ProfileIcon
         className={classes.profileIcon}
         firstName={firstName}
         lastName={lastName}
       />
+      <button
+      className={classes.priorityText}
+        style={{
+          backgroundColor: colorsGenerator(priority),
+          color: priority === 'LOW' ? '#011B60' : undefined
+        }}
+      >{sentenceCase(priority)}</button>
+      </div>
       <div className={classes.cardRight}>
         <button
           className={classes.taskStatus}

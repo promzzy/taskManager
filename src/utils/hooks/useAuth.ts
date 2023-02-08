@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { setIsLoading } from "../../redux/features/appSlice"
 import { setTask, setTeamMember, setUserData } from "../../redux/features/userSlice"
 import { RootState } from "../../redux/types"
 import authService from "../../services/auth.service"
 import { errorCatch, userInfo } from "../types"
+  import { toast } from 'react-toastify';
+
 
 function useAuth(){
     const { currentUser }: any = useSelector(
@@ -12,17 +15,32 @@ function useAuth(){
   const reduxDispatch = useDispatch()
   const history = useNavigate()
 
+  // FUNCTION FOR LOGOUT
   function logOut(){
-    reduxDispatch(setUserData(null))
+      reduxDispatch(setIsLoading(true))
+    setTimeout(() => {
+      reduxDispatch(setUserData(null))
       history('/')
+      reduxDispatch(setIsLoading(false))
+    }, 1000);
   }
 
+  // FUNCTION FOR LOGIN
    function login({
     email,
     password,
   }: { email: string, password: string }) {
-
-     const users: any = authService.onLogin()
+     if(!email) {
+      toast.error("Email is required")
+      return;
+     }
+     if(!password) {
+      toast.error("Password is required")
+      return;
+     }
+      reduxDispatch(setIsLoading(true))
+    setTimeout(() => {
+       const users: any = authService.onLogin()
       users.then(({USER}: any) => {
         const logedInUser = USER.find((item: userInfo) => item.email === email && item.password === password)
         if(logedInUser){
@@ -30,15 +48,21 @@ function useAuth(){
            reduxDispatch(setTask(logedInUser?.task || []));
            reduxDispatch(setTeamMember(logedInUser?.team || []))
           history('/dashboard')
+          toast.success('Logged in successfully')
           return
         }
 
-        alert('invalid email or password')
+        toast.error('invalid email or password')
       })
-      .catch(({message}: errorCatch) => {alert(message)});
+      .catch(({message}: errorCatch) => {toast.warning(message)})
+      .finally(() => {
+         reduxDispatch(setIsLoading(false))
+      })
+    }, 3000);
 
   }
 
+  // FUNCTION TO REFETCH LOGED IN USER
   function getUserData(){
          const users: any = authService.onLogin()
       users.then(({USER}: any) => {

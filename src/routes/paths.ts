@@ -1,5 +1,6 @@
 export const paths = {
   dashboard: '/dashboard',
+  dashboardCreateTask: '/dashboard/create-task',
   taskBoard: '/task-board',
   createTask: '/task-board/create-task',
   editTask: '/task-board/edit-task/:taskId',

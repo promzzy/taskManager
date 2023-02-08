@@ -8,7 +8,7 @@ export type ManageTaskProps = {
 
 export type ReducerProps = {
     title: string,
-    assignee: userInfo | null,
+    assignee: any,
     dueDate: string,
     status: string,
     priority: string,

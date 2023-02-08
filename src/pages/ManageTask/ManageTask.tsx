@@ -7,19 +7,21 @@ import { ManageTaskProps } from "./types";
 import useManageTask from "./hooks/useManageTask";
 import Dropdown from "../../components/Dropdown";
 import { userInfo } from "../../utils/types";
+import { allStatus, priorityOptions } from "./constants";
 const ManageTask: FC<ManageTaskProps> = ({
   isEdit,
   onClose,
-  myTeam = [],
 }) => {
 
-  const { state, allStatus, allMembers, dispatch, createTask } = useManageTask({isEdit, onClose})
+  const { state, allMembers, dispatch, createTask } = useManageTask({isEdit, onClose})
 
   const {
       title,
       assignee,
       status,
       description,
+      priority,
+      dueDate
   } = state;
 
   return (
@@ -49,9 +51,36 @@ const ManageTask: FC<ManageTaskProps> = ({
            value={assignee?.id}
            onChange={({target}) => {
             const findAssignee = allMembers.find((assignee: userInfo) => assignee.id === Number(target.value));
-                dispatch({assignee: findAssignee})
+               if(findAssignee) {
+                 dispatch({assignee: findAssignee})
+                 return
+                }
+                dispatch({
+                  assignee: {firstName: '', lastName: '',}
+                })
+
            }}
             />
+           </div>
+          <div className={classes.inputRow}>
+          <Dropdown
+           className={classes.dropdown}
+           placeholder="Priority Level"
+           options={priorityOptions}
+           value={priority}
+           onChange={({ target}) => dispatch({priority: target.value})}
+            />
+            <div style={{width: '95%'}}>
+          <label htmlFor="">DueDate</label>
+          <InputField
+          className={classes.taskTitleInput}
+          placeholder="Task Title / Name"
+          value={dueDate}
+          name="title"
+          type="date"
+          onChange={({target}) => dispatch({dueDate: target.value})}
+           />
+            </div>
            </div>
           <TextArea
           className={classes.textarea}

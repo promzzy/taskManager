@@ -5,5 +5,5 @@ export type cardProps = {
   title: string,
   icon?: ReactElement<any, any>,
   description: string,
-  onClick: () => void,
+  onClick?: () => void,
 }

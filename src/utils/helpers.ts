@@ -1,19 +1,18 @@
 import moment from "moment";
 
 export function colorsGenerator(key: string){
-  switch (key) {
-    case 'UPCOMING':
-
-      return '#af0909c6';
-    case 'INPROGRESS':
-      return '#FD6820';
-    case 'COMPLETED':
-      return '#005C17'
-
-    default:
-      return '#000000';
+  const colorValues: any = {
+    UPCOMING: '#af0909c6',
+    INPROGRESS: '#FD6820',
+    COMPLETED: '#005C17',
+    URGENT: '#f50101',
+    HIGH: '#ffcc01',
+    NORMAL: '#6fddff',
+    LOW: '#d8d8d8',
   }
+  return colorValues[key] || '#000000'
 }
+
 
 export function sentenceCase(value: string) {
   return value.toLowerCase().replace(/^./g, value.charAt(0).toUpperCase())

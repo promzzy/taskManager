@@ -7,6 +7,29 @@
 .taskMobileScrren{
   display: none;
 }
+.emptyList{
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emptyList h3{
+  opacity: .75;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+.newTaskBtn{
+  border: none;
+  padding: 2px 20px;
+  font-size: .85em;
+  font-weight: 300;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.newTaskBtn:hover{
+  background-color: #C1C0C0;
+}
 
 /* ------------------------------------------------------------------------------------------------
                               MEDIA QUERY

@@ -12,10 +12,10 @@ const InfoCard: FC<cardProps> = ({
 
   return (
     <div className={`${classes.cardRoot} ${className}`}>
-      <div className={classes.cardIcon}>{icon}</div>
+      {!!icon && <div className={classes.cardIcon}>{icon}</div>}
       <div className={classes.cardTitle}>{title}</div>
       <div className={classes.cardDesc}>{description}</div>
-      <button onClick={onClick} className={classes.button}>View Task</button>
+      {!!onClick && <button onClick={onClick} className={classes.button}>New Task</button>}
     </div>
   )
 }
