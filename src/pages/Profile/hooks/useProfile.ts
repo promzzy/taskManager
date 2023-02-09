@@ -1,5 +1,7 @@
 import { Reducer, useEffect, useReducer } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from 'react-toastify';
+import { setIsLoading } from "../../../redux/features/appSlice";
 import { RootState } from "../../../redux/types";
 import authService from "../../../services/auth.service";
 import useAuth from "../../../utils/hooks/useAuth";
@@ -8,6 +10,7 @@ import { ReducerState } from "../types";
 function useProfile(){
 
   const { getUserData } = useAuth()
+  const reduxDispatch = useDispatch();
 
 const { currentUser }: any = useSelector(
     (reduxState: RootState) => reduxState.user
@@ -27,15 +30,22 @@ const { currentUser }: any = useSelector(
   useEffect(() => {
     dispatch(currentUser)
   }, [currentUser])
+
   function onUpdateProfile(){
-        const addTask: any = authService.updateProfile({
+    reduxDispatch(setIsLoading(true))
+setTimeout(() => {
+          const addTask: any = authService.updateProfile({
            ...currentUser, ...state
       })
 
       addTask.then(() => {
         getUserData()
-        alert('saved successfully')
+        toast.success('saved successfully')
       })
+      .finally(() => {
+        reduxDispatch(setIsLoading(false))
+      })
+}, 1500);
   }
 
   return{ state, dispatch, onUpdateProfile}
