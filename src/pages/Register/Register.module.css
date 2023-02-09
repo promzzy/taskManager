@@ -1,5 +1,5 @@
 .cardWrapper{
-  padding: 2.5em;
+  padding: 2em;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: #ffffff;
@@ -18,17 +18,18 @@
 }
 .inputWrapper{
   margin-top: 25px;
+  width: 100%;
 }
 label{
   font-size: 1em;
   font-weight: 500;
 }
 .input{
-  margin-top: 10px;
-  border-radius: 10px;
+  margin-top: 5px;
+  border-radius: 3px;
   border: 1px solid#00000060;
 }
 .inputRow{
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
