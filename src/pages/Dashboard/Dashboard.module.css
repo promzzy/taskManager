@@ -78,6 +78,10 @@
   .dashboardBody{
     flex-Direction: column;
   }
+    .dashboardRoot{
+    overflow: scroll;
+    padding: 1.5em 1em;
+  }
 }
 @media  (max-width: 680px) {
   .taskGroupings{
@@ -86,9 +90,5 @@
   .leftBodySection{
   }
   .rightBodySection{
-  }
-  .dashboardRoot{
-    overflow: scroll;
-    padding: 1.5em 1em;
   }
 }

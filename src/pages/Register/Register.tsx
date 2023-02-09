@@ -6,7 +6,7 @@ import useRegister from "./hooks/useRegister";
 import classes from "./Register.module.css";
 
 const Register: FC = () => {
-  const { state, dispatch, history, handleRegister, } = useRegister();
+  const { state, dispatch, history, handleRegister } = useRegister();
   const { firstName, lastName, email, password, phoneNumber } = state;
   return (
     <AuthWrapper onClick={() => history("/")} type="REGISTER">
@@ -20,7 +20,7 @@ const Register: FC = () => {
                 className={classes.input}
                 placeholder="First Name"
                 value={firstName}
-                onChange={({target}) => dispatch({firstName: target.value})}
+                onChange={({ target }) => dispatch({ firstName: target.value })}
               />
             </div>
             <div className={classes.inputWrapper}>
@@ -29,7 +29,7 @@ const Register: FC = () => {
                 className={classes.input}
                 placeholder="Last Name"
                 value={lastName}
-                onChange={({target}) => dispatch({lastName: target.value})}
+                onChange={({ target }) => dispatch({ lastName: target.value })}
               />
             </div>
           </div>
@@ -41,7 +41,7 @@ const Register: FC = () => {
                 className={classes.input}
                 placeholder="Enter your email"
                 value={email}
-                onChange={({target}) => dispatch({email: target.value})}
+                onChange={({ target }) => dispatch({ email: target.value })}
               />
             </div>
             <div className={classes.inputWrapper}>
@@ -51,7 +51,9 @@ const Register: FC = () => {
                 placeholder="080XXXXXX..."
                 value={phoneNumber}
                 name="phoneNumber"
-                onChange={({target}) => dispatch({phoneNumber: target.value})}
+                onChange={({ target }) =>
+                  dispatch({ phoneNumber: target.value })
+                }
               />
             </div>
           </div>
@@ -63,7 +65,7 @@ const Register: FC = () => {
               placeholder="Enter your password"
               name="password"
               value={password}
-              onChange={({target}) => dispatch({password: target.value})}
+              onChange={({ target }) => dispatch({ password: target.value })}
             />
           </div>
           <div className={classes.buttonBox}>
